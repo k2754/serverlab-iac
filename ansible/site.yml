@@ -1,21 +1,22 @@
 ---
 - name: Configure web servers
   hosts: webservers
-  become: yes
+  become: true
   tasks:
     - name: Install Apache2
-      apt:
+      ansible.builtin.apt:
         name: apache2
         state: present
-        update_cache: yes
+        update_cache: true
 
     - name: Deploy index.html
-      copy:
+      ansible.builtin.copy:
         content: "<h1>Managed by Ansible: {{ inventory_hostname }}</h1>"
         dest: /var/www/html/index.html
+        mode: "0644"
 
     - name: Ensure Apache2 is running
-      service:
+      ansible.builtin.service:
         name: apache2
         state: started
-        enabled: yes
+        enabled: true
