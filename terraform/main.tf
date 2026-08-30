@@ -20,9 +20,9 @@ resource "aws_vpc" "tf_lab_vpc" {
 
 resource "aws_subnet" "tf_lab_subnet" {
   vpc_id                  = aws_vpc.tf_lab_vpc.id
-  cidr_block               = "10.1.1.0/24"
-  availability_zone        = "ap-northeast-3a"
-  map_public_ip_on_launch  = true
+  cidr_block              = "10.1.1.0/24"
+  availability_zone       = "ap-northeast-3a"
+  map_public_ip_on_launch = true
   tags = {
     Name = "tf-lab-subnet"
   }
